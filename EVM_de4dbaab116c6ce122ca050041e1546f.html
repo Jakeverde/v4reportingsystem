@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>EVM Cabals Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            --primary-color: #ffd52c;
+            --secondary-color: #ff5c00;
+            --tertiary-color: #c72d04;
+            --background-color: #111;
+            scrollbar-color: var(--primary-color) var(--secondary-color);
+            font-size: clamp(16px, 2vw, 24px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            overflow: hidden;
+        }
+
+        .retro-container {
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+            height: 90vh;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-shadow: 0 0 1rem var(--primary-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .retro-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('/Users/mrod/IMG/hounds1.png') center/contain no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header, footer {
+            flex: 0 0 auto;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        main {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        section {
+            flex: 1 1 auto;
+            overflow: auto;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        a {
+            color: var(--primary-color);
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .audit-table {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .copy-button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-left: 8px;
+            font-family: inherit;
+        }
+
+        .copy-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2) 50%, transparent 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                font-size: clamp(14px, 4vw, 18px);x
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            .retro-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Success
+            }, (err) => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="retro-container">
+        <header>
+            <h1>V4 REPORT</h1>
+        </header>
+        <main>
+            <section>
+                <article>
+                    <header class="center-text">
+                        <h2>Group Information 41626</h2>
+                    </header>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                <th>Blockchain</th>
+                                <th>Token Name</th>
+                                <th>Contract Address</th>
+                                <th>Dextools Link</th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ETH</td>
+                                <td>Injective Token</td>
+                                <td>
+                                    0xe28b...ca30 
+                                    <button class="copy-button" onclick="copyToClipboard('0xe28b3b32b6c345a34ff64674606124dd5aceca30')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/ether/pair-explorer/0xfb3cd0b8a5371fe93ef92e3988d30df7931e2820" target="_blank">Injective Token</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BSC</td>
+                                <td>SafePal Token</td>
+                                <td>
+                                    0xd41f...5dfb 
+                                    <button class="copy-button" onclick="copyToClipboard('0xd41fdb03ba84762dd66a0af1a6c8540ff1ba5dfb')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/bsc/pair-explorer/0x942b294e59a8c47a0f7f20df105b082710f7c305" target="_blank">SafePal Token</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ETH</td>
+                                <td>DEXTF Token</td>
+                                <td>
+                                    0x5f64...89f0 
+                                    <button class="copy-button" onclick="copyToClipboard('0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/ether/pair-explorer/0xa1444ac5b8ac4f20f748558fe4e848087f528e00" target="_blank">DEXTF Token</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BSC </td>
+                                <td>TrustFi Network Token</td>
+                                <td>
+                                    0x7565...8235 
+                                    <button class="copy-button" onclick="copyToClipboard('0x7565ab68d3f9dadff127f864103c8c706cf28235')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/BSC /pair-explorer/0xb1c508f942c1d1b1a44384bcc92885e43887d0fa" target="_blank">TrustFi Network Token</a></td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </div>
+                    <header class="center-text">
+                        <h3>History and Marketing</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Hit Percentage</th>
+                            <th>Hits</th>
+                            <th>Hot Pair</th>
+                            <th>Hot Pair Count</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>BSC</td>
+                            <td>6.9%</td>
+                            <td>2 of 29</td>
+                            <td>TRUE</td>
+                            <td>3 of 4</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>BSC </td>
+                            <td>6.9%</td>
+                            <td>2 of 29</td>
+                            <td>TRUE</td>
+                            <td>3 of 4</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>6.9%</td>
+                            <td>2 of 29</td>
+                            <td>F</td>
+                            <td>3 of 4</td>
+                        </tr>
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>Funding History</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Funding</th>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BSC</td>
+                            <td>
+                                0x37be...95d4
+                                <button class="copy-button" onclick="copyToClipboard('0x37be1c9e970b9c666665bcc21fd8336d0d3995d4')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>BSC </td>
+                            <td>bigcatfi.bnb</td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>Kraken 4</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>
+                                0xff9b...c0d5
+                                <button class="copy-button" onclick="copyToClipboard('0xff9bd8ccfeeee981097137d743b927a82f4ec0d5')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>GoPLUS Audit</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Buy Tax</th>
+                            <th>Sell Tax</th>
+                            <th>Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>0.0</td>
+                            <td>0.0</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Whitelisted</th>
+                            <th>Blacklisted</th>
+                            <th>Anti_Whale</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Trading Cooldown</th>
+                            <th>Transfer Pause</th>
+                            <th>Anti Whale Modifiable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Fake Renounce</th>
+                            <th>Proxy</th>
+                            <th>Self Destruct</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Cannot Buy</th>
+                            <th>Cannot Sell</th>
+                            <th>Mintable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Dev Slippage</th>
+                            <th>User Slippage</th>
+                            <th>Deployer Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>0.0</td>
+                            <td>0.0</td>
+                            <td>False</td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>Generated by V4 Reporting System</p>
+        </footer>
+        <div class="scanlines"></div>
+    </div>
+</body>
+</html>

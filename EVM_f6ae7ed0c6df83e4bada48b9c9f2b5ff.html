@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>EVM Cabals Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            --primary-color: #ffd52c;
+            --secondary-color: #ff5c00;
+            --tertiary-color: #c72d04;
+            --background-color: #111;
+            scrollbar-color: var(--primary-color) var(--secondary-color);
+            font-size: clamp(16px, 2vw, 24px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            overflow: hidden;
+        }
+
+        .retro-container {
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+            height: 90vh;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-shadow: 0 0 1rem var(--primary-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .retro-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('/Users/mrod/IMG/hounds1.png') center/contain no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header, footer {
+            flex: 0 0 auto;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        main {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        section {
+            flex: 1 1 auto;
+            overflow: auto;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        a {
+            color: var(--primary-color);
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .audit-table {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .copy-button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-left: 8px;
+            font-family: inherit;
+        }
+
+        .copy-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2) 50%, transparent 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                font-size: clamp(14px, 4vw, 18px);x
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            .retro-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Success
+            }, (err) => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="retro-container">
+        <header>
+            <h1>V4 REPORT</h1>
+        </header>
+        <main>
+            <section>
+                <article>
+                    <header class="center-text">
+                        <h2>Group Information 24589</h2>
+                    </header>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                <th>Blockchain</th>
+                                <th>Token Name</th>
+                                <th>Contract Address</th>
+                                <th>Dextools Link</th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ETH</td>
+                                <td>Any Inu</td>
+                                <td>
+                                    0x2598...e875 
+                                    <button class="copy-button" onclick="copyToClipboard('0x2598c30330d5771ae9f983979209486ae26de875')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/ether/pair-explorer/0xcede28c51b86988a2e91a4c27e80733e0adbfe7d" target="_blank">Any Inu</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ETH</td>
+                                <td>Hydra</td>
+                                <td>
+                                    0xac11...4877 
+                                    <button class="copy-button" onclick="copyToClipboard('0xac11a6166d01f9ac28f708f9c4a973ed0e434877')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/ether/pair-explorer/0xcb38104958c91e9e51ae995c3c07be4bff9f33fb" target="_blank">Hydra</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ETH</td>
+                                <td>VMX</td>
+                                <td>
+                                    0x8d4e...1088 
+                                    <button class="copy-button" onclick="copyToClipboard('0x8d4eb3f56d35109e31872876fb137af3bc0a1088')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/ether/pair-explorer/0x3e83c73525ebf532f5de28fcc74942e752af1c9f" target="_blank">VMX</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>ARB</td>
+                                <td>XDEFI</td>
+                                <td>
+                                    0x180f...2969 
+                                    <button class="copy-button" onclick="copyToClipboard('0x180f7cf38805d1be95c7632f653e26b0838e2969')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/arbitrum/pair-explorer/0x0452a96f7113358bdddb8383e5b3a408ab491164" target="_blank">XDEFI</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BSC</td>
+                                <td>Any Inu</td>
+                                <td>
+                                    0x2598...e875 
+                                    <button class="copy-button" onclick="copyToClipboard('0x2598c30330d5771ae9f983979209486ae26de875')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/bsc/pair-explorer/0xbacbea108e060aeb3aa4bd55bf46534bdde6f6b7" target="_blank">Any Inu</a></td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </div>
+                    <header class="center-text">
+                        <h3>History and Marketing</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Hit Percentage</th>
+                            <th>Hits</th>
+                            <th>Hot Pair</th>
+                            <th>Hot Pair Count</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>ARB</td>
+                            <td>1.79%</td>
+                            <td>1 of 56</td>
+                            <td>TRUE</td>
+                            <td>3 of 5</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>BSC</td>
+                            <td>1.79%</td>
+                            <td>1 of 56</td>
+                            <td>TRUE</td>
+                            <td>3 of 5</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>5.36%</td>
+                            <td>3 of 56</td>
+                            <td>TRUE</td>
+                            <td>3 of 5</td>
+                        </tr>
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>Funding History</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Funding</th>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>ARB</td>
+                            <td>
+                                0x3de3...9c1b
+                                <button class="copy-button" onclick="copyToClipboard('0x3de3a257f0e50af9bf48aea633e06085695d9c1b')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>BSC</td>
+                            <td>
+                                0xa57a...0ef2
+                                <button class="copy-button" onclick="copyToClipboard('0xa57adce1d2fe72949e4308867d894cd7e7de0ef2')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>Bybit: Hot Wallet, ENS: ETH Registrar Controller, Stake Dot Com</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>Binance 17</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>ETH</td>
+                            <td>
+                                0xa57a...0ef2
+                                <button class="copy-button" onclick="copyToClipboard('0xa57adce1d2fe72949e4308867d894cd7e7de0ef2')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>GoPLUS Audit</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Buy Tax</th>
+                            <th>Sell Tax</th>
+                            <th>Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>0.0001</td>
+                            <td>0.0</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Whitelisted</th>
+                            <th>Blacklisted</th>
+                            <th>Anti_Whale</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Trading Cooldown</th>
+                            <th>Transfer Pause</th>
+                            <th>Anti Whale Modifiable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Fake Renounce</th>
+                            <th>Proxy</th>
+                            <th>Self Destruct</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Cannot Buy</th>
+                            <th>Cannot Sell</th>
+                            <th>Mintable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <th>Dev Slippage</th>
+                            <th>User Slippage</th>
+                            <th>Deployer Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>0.0</td>
+                            <td>0.0</td>
+                            <td>False</td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>Generated by V4 Reporting System</p>
+        </footer>
+        <div class="scanlines"></div>
+    </div>
+</body>
+</html>

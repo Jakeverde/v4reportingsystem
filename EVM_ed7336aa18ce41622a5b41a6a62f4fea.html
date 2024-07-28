@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>EVM Cabals Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            --primary-color: #ffd52c;
+            --secondary-color: #ff5c00;
+            --tertiary-color: #c72d04;
+            --background-color: #111;
+            scrollbar-color: var(--primary-color) var(--secondary-color);
+            font-size: clamp(16px, 2vw, 24px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            overflow: hidden;
+        }
+
+        .retro-container {
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+            height: 90vh;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-shadow: 0 0 1rem var(--primary-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .retro-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('/Users/mrod/IMG/hounds1.png') center/contain no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header, footer {
+            flex: 0 0 auto;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        main {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--background-color);
+            z-index: 1;
+        }
+
+        section {
+            flex: 1 1 auto;
+            overflow: auto;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        a {
+            color: var(--primary-color);
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .audit-table {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .copy-button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-left: 8px;
+            font-family: inherit;
+        }
+
+        .copy-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2) 50%, transparent 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                font-size: clamp(14px, 4vw, 18px);x
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            .retro-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Success
+            }, (err) => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="retro-container">
+        <header>
+            <h1>V4 REPORT</h1>
+        </header>
+        <main>
+            <section>
+                <article>
+                    <header class="center-text">
+                        <h2>Group Information 10952</h2>
+                    </header>
+                    <div class="content">
+                        <table>
+                            <tr>
+                                <th>Blockchain</th>
+                                <th>Token Name</th>
+                                <th>Contract Address</th>
+                                <th>Dextools Link</th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Ski Mask Miggles</td>
+                                <td>
+                                    0x85d5...9424 
+                                    <button class="copy-button" onclick="copyToClipboard('0x85d571852aa36cb379d916ad82b8520071a99424')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xc50b1701846da474ab6e1bf25652cb0b5de60cbd" target="_blank">Ski Mask Miggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Furry</td>
+                                <td>
+                                    0x0fc1...da20 
+                                    <button class="copy-button" onclick="copyToClipboard('0x0fc161b251d4736c98d6054c4dca809ee11dda20')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x020ae1f01e64ff7dfeb029a697a328b8c09c0f16" target="_blank">Furry</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Walter The Doggo</td>
+                                <td>
+                                    0xc2e3...7d67 
+                                    <button class="copy-button" onclick="copyToClipboard('0xc2e36b051675251030a15e0f6c016ed7f8797d67')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x13424c8d9801681dc88a4d445e166daa3222070d" target="_blank">Walter The Doggo</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Blue-Footed Booby</td>
+                                <td>
+                                    0x80b3...4979 
+                                    <button class="copy-button" onclick="copyToClipboard('0x80b3455e1db60b4cba46aba12e8b1e256dd64979')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x3de258603f0379aeb761d93135a3abbeea67b2b6" target="_blank">Blue-Footed Booby</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Crash</td>
+                                <td>
+                                    0x4dd9...c87f 
+                                    <button class="copy-button" onclick="copyToClipboard('0x4dd9077269dd08899f2a9e73507125962b5bc87f')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xf012e803c8e73d185ac96d6c3f830893a1116e03" target="_blank">Crash</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Kid Skelly by Matt Furie</td>
+                                <td>
+                                    0xebfc...8e59 
+                                    <button class="copy-button" onclick="copyToClipboard('0xebfccbe168bdb922fc76941e16c63a1e196a8e59')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xf921404335ffee5a0b39f403785226459b446b9f" target="_blank">Kid Skelly by Matt Furie</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>MrsCrash</td>
+                                <td>
+                                    0xb28d...4482 
+                                    <button class="copy-button" onclick="copyToClipboard('0xb28d51a6960bbd66b4e46efdd2b1192360c74482')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x503ba5dcf3920768f68de6cd47995f24dde80ba3" target="_blank">MrsCrash</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Matt Furie</td>
+                                <td>
+                                    0x4f31...f492 
+                                    <button class="copy-button" onclick="copyToClipboard('0x4f31d781517b637ecaf037a0d5513d0d72bcf492')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xc3ad47b7143f24ce1686fdf3a66291b0e59b6bf5" target="_blank">Matt Furie</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>This Is My Iguana</td>
+                                <td>
+                                    0x9bee...3777 
+                                    <button class="copy-button" onclick="copyToClipboard('0x9beec80e62aa257ced8b0edd8692f79ee8783777')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xa987c7d9109aa93224ba7481f5ca3cae51675556" target="_blank">This Is My Iguana</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Ape.store Alerts and Monitors</td>
+                                <td>
+                                    0xc074...fe4d 
+                                    <button class="copy-button" onclick="copyToClipboard('0xc074c4c9a6b4e0eebeded1bb25de4249e76efe4d')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xc1eab4ad389d16722aeeac08dc268e02220bbdfa" target="_blank">Ape.store Alerts and Monitors</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BRISH </td>
+                                <td>
+                                    0x37f2...a299 
+                                    <button class="copy-button" onclick="copyToClipboard('0x37f24b26bcefbfac7f261b97f8036da98f81a299')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xdc9a87feb3fa28b0abab9bf743599dfcf412d93c" target="_blank">BRISH </a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Be a Man</td>
+                                <td>
+                                    0xfa8b...0b94 
+                                    <button class="copy-button" onclick="copyToClipboard('0xfa8b95776b9d958cf1c02eca32d611fa75b20b94')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x9d452554fa82225360de25ea03511f015423d2b7" target="_blank">Be a Man</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Mister Miggles</td>
+                                <td>
+                                    0xb1a0...f25d 
+                                    <button class="copy-button" onclick="copyToClipboard('0xb1a03eda10342529bbf8eb700a06c60441fef25d')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xadad4ce0c68f50a19cf5063e0b91d701daab1df1" target="_blank">Mister Miggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Rocky</td>
+                                <td>
+                                    0x1597...2979 
+                                    <button class="copy-button" onclick="copyToClipboard('0x1597ef51f18baf0ef057b19cdae3b546bc0c2979')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x0f182df53b43d64e8967978e89bebef11dfe25a6" target="_blank">Rocky</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Tradie</td>
+                                <td>
+                                    0xd55a...30bd 
+                                    <button class="copy-button" onclick="copyToClipboard('0xd55af8816d85bd0a3f345800875f91c91a2e30bd')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x6a0612295c8fdb7a6e0763a0310131388df6c8f7" target="_blank">Tradie</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Brettistic</td>
+                                <td>
+                                    0x8b19...ad4d 
+                                    <button class="copy-button" onclick="copyToClipboard('0x8b193f00d8a77484df1452890472af357f60ad4d')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x591717f8ac95ce2bdb287d579595ca790cb13834" target="_blank">Brettistic</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Ansem</td>
+                                <td>
+                                    0xda7f...9a77 
+                                    <button class="copy-button" onclick="copyToClipboard('0xda7f3cbd1724e6f0d8a815aa6b320c2c44879a77')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xc5ac2bccaeafbf78c7393914f52673e6bdcbf7f3" target="_blank">Ansem</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Nogwai by Matt Furie</td>
+                                <td>
+                                    0xbd97...1d11 
+                                    <button class="copy-button" onclick="copyToClipboard('0xbd97693278f1948c59f65f130fd87e7ff7c61d11')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xd5c7c9d6718546f97b8b7129f7438fabbdd02aa8" target="_blank">Nogwai by Matt Furie</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BASED RABBIT</td>
+                                <td>
+                                    0x642e...8e92 
+                                    <button class="copy-button" onclick="copyToClipboard('0x642e993fa91ffe9fb24d39a8eb0e0663145f8e92')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x250f72fc50a62cb55a90f342f01e93a4ba9c19c8" target="_blank">BASED RABBIT</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Lambow</td>
+                                <td>
+                                    0x4b61...702c 
+                                    <button class="copy-button" onclick="copyToClipboard('0x4b61e2f1bbdee6d746209a693156952936f1702c')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xca12d459d28eb7707614ec09cc62cce4039fc1a4" target="_blank">Lambow</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Mister Triggles</td>
+                                <td>
+                                    0x987f...2cf4 
+                                    <button class="copy-button" onclick="copyToClipboard('0x987f6eff639f1a1307dbb4b389ac2d6b66362cf4')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xa45c40301bb32ce5c97c1dda58810479d3ac0060" target="_blank">Mister Triggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>CHINKIE</td>
+                                <td>
+                                    0xe559...d549 
+                                    <button class="copy-button" onclick="copyToClipboard('0xe55935cbc83f3603c4eb3db421de55973c01d549')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x7d55399851593ca4cc88d3207b3b5fe8946e4237" target="_blank">CHINKIE</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Mr Onchain Summer Miggles</td>
+                                <td>
+                                    0x256c...6833 
+                                    <button class="copy-button" onclick="copyToClipboard('0x256cb26aa01c5d7cd68644328fa538f9a6dc6833')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x83906d98ab18fa802551f5694d4d3d156bbe61df" target="_blank">Mr Onchain Summer Miggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Mister Miggles </td>
+                                <td>
+                                    0xa84c...9c97 
+                                    <button class="copy-button" onclick="copyToClipboard('0xa84c477d67ba8a202032f48a5699e3c7c91e9c97')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x19e62044d8e71934b935bfa03c62e5d04e3be58f" target="_blank">Mister Miggles </a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Jeffry on Base</td>
+                                <td>
+                                    0x213f...98d7 
+                                    <button class="copy-button" onclick="copyToClipboard('0x213f1161046f525eb7a4e909d631dd1b9f0198d7')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x8772d9b553c1a9f4b57fc946f112cee5beac7c8e" target="_blank">Jeffry on Base</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>OG Survivor</td>
+                                <td>
+                                    0x3e75...8fce 
+                                    <button class="copy-button" onclick="copyToClipboard('0x3e75789be4371b5e80e41e99c12ffcccd25b8fce')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x3cd1d063453b1f7ce6df9241d5b2da8d90107582" target="_blank">OG Survivor</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BRASH</td>
+                                <td>
+                                    0xe7a9...8927 
+                                    <button class="copy-button" onclick="copyToClipboard('0xe7a91642d4b377d25e1cfea8cdda911cfcfc8927')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x807a2dc30b8e9d375116c4044a23cb674c2fb2f9" target="_blank">BRASH</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Pepe’s Dog</td>
+                                <td>
+                                    0x7422...6da7 
+                                    <button class="copy-button" onclick="copyToClipboard('0x7422f030958edf9884ce9c46a211029e03ef6da7')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x62d9e6cc3899f646e104a72f312babbc58425be1" target="_blank">Pepe’s Dog</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Lego Brett</td>
+                                <td>
+                                    0x229c...516e 
+                                    <button class="copy-button" onclick="copyToClipboard('0x229c3313a553f89c88738a413b1df45535bd516e')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xb27d440769acf67569c8570fdeb56fcd537367ec" target="_blank">Lego Brett</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>POΞ</td>
+                                <td>
+                                    0xd429...4d80 
+                                    <button class="copy-button" onclick="copyToClipboard('0xd429a52a56c712ab8ba11eacd8bf178e7c3b4d80')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xaa11918bcb5d84ed5c338bddef267fbb455d200f" target="_blank">POΞ</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Biggy Azalea</td>
+                                <td>
+                                    0xe858...ea1a 
+                                    <button class="copy-button" onclick="copyToClipboard('0xe858c0cb2ea708075603e4f00bd3cb052095ea1a')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x5c29ad960c8a5d4e1659bf8b5e3db7e8c9efc1c4" target="_blank">Biggy Azalea</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>HAWKTUAH</td>
+                                <td>
+                                    0xe5cb...b30e 
+                                    <button class="copy-button" onclick="copyToClipboard('0xe5cb9204fce93c773957bed0b1151c3e37e4b30e')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xc8dbdfe9db0961d1a43247a610124217ce1ec5fd" target="_blank">HAWKTUAH</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>JAKE GAGAIN</td>
+                                <td>
+                                    0x2fa2...8261 
+                                    <button class="copy-button" onclick="copyToClipboard('0x2fa2eda29225ab5de488597e2201838ec5d28261')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x9ef6019df3935a60db9df683a7865941782a2ac8" target="_blank">JAKE GAGAIN</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Chinese Miggles</td>
+                                <td>
+                                    0x6499...807c 
+                                    <button class="copy-button" onclick="copyToClipboard('0x6499d9326678be2a8d726bb3da1320c800d2807c')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x71a72acf9f40935fd299aa8459113af875a181d4" target="_blank">Chinese Miggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BRUTE</td>
+                                <td>
+                                    0xc7c1...93a1 
+                                    <button class="copy-button" onclick="copyToClipboard('0xc7c1198794d1d973de0736180cca6d9e989293a1')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xb1be6c74c291ead938b8db4a3e4236625c855339" target="_blank">BRUTE</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>American Shib</td>
+                                <td>
+                                    0xdf53...a76e 
+                                    <button class="copy-button" onclick="copyToClipboard('0xdf53cd94d14fb439b0140633019ab9169c4ba76e')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x6092c24288ea14505975321c3fc32c7ef5a2c391" target="_blank">American Shib</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Horny on Base</td>
+                                <td>
+                                    0x72f2...9c65 
+                                    <button class="copy-button" onclick="copyToClipboard('0x72f24c7aca7d1f12563d66e03977061af8739c65')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x982215f36863399548b8b1795b4401be880dc171" target="_blank">Horny on Base</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Baby Miggles</td>
+                                <td>
+                                    0x1d8b...636e 
+                                    <button class="copy-button" onclick="copyToClipboard('0x1d8bd673c8976879041bc65d15374532a15e636e')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x07d09274096ca436eaa6047a8c4a66fc5a1c5205" target="_blank">Baby Miggles</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Capybase</td>
+                                <td>
+                                    0xfa7a...3c14 
+                                    <button class="copy-button" onclick="copyToClipboard('0xfa7a8ebdcde18e51a37a7c0531df2103e65a3c14')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xd8ddeb9d4df06f130ec1d970d8626fca8d60175e" target="_blank">Capybase</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Chinese Doge Wow</td>
+                                <td>
+                                    0xf31e...9fed 
+                                    <button class="copy-button" onclick="copyToClipboard('0xf31e6d62bfc485857af2186eb3d8ee94b4379fed')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xf1cfaf629928d814046f981a1990d5bc56d793d3" target="_blank">Chinese Doge Wow</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Blunny</td>
+                                <td>
+                                    0x7546...45ef 
+                                    <button class="copy-button" onclick="copyToClipboard('0x7546e0d4d947a15f914e33de6616ffed826f45ef')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x4ba99f9d7a3c5a04c3c8f98f6e12a0f39308c2bb" target="_blank">Blunny</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BASED DON</td>
+                                <td>
+                                    0xf6d7...dc3b 
+                                    <button class="copy-button" onclick="copyToClipboard('0xf6d7c6376c5b78b4cb9d24f57053b3f85a6bdc3b')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xcae47078a578b0023287ee38024f14f9153d8600" target="_blank">BASED DON</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BabyCrash</td>
+                                <td>
+                                    0x74ff...5f34 
+                                    <button class="copy-button" onclick="copyToClipboard('0x74ff3cbf86f95fea386f79633d7bc4460d415f34')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x36e6d2a9e340b245586165fea3071e75a41bbf69" target="_blank">BabyCrash</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Miggles Licking Everything MLEM</td>
+                                <td>
+                                    0x8730...d02d 
+                                    <button class="copy-button" onclick="copyToClipboard('0x8730b6234045bf4497e646ef92f106894512d02d')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x906591c15e6ea1b1536d93a3327b0ec16b24181f" target="_blank">Miggles Licking Everything MLEM</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>BRATT</td>
+                                <td>
+                                    0xac0e...502a 
+                                    <button class="copy-button" onclick="copyToClipboard('0xac0ef4c9c5a77fd59bb26a2dccaaca2b33f6502a')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x2efaab8887250b4696ef653004622d17dc924021" target="_blank">BRATT</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>FOFAR</td>
+                                <td>
+                                    0x0d45...5fd6 
+                                    <button class="copy-button" onclick="copyToClipboard('0x0d4522191e02c5b17cf2d7e1de4c340e773b5fd6')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x381ebe4b014eff5ff51731397b789f01ce4b3831" target="_blank">FOFAR</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>CHEERS</td>
+                                <td>
+                                    0xae7d...88e8 
+                                    <button class="copy-button" onclick="copyToClipboard('0xae7db3f790e5f8dd1313a4edebf52699cf8888e8')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x9fadd665f27883b1268525d0224f85ef21e4b2ce" target="_blank">CHEERS</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Misser</td>
+                                <td>
+                                    0x0718...fc95 
+                                    <button class="copy-button" onclick="copyToClipboard('0x0718f45bbf4781ce891e4e18182f025725f0fc95')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x6d2f4db77e0e9e6554cf23d2d093984a4abd9b26" target="_blank">Misser</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Catson</td>
+                                <td>
+                                    0xca8e...399c 
+                                    <button class="copy-button" onclick="copyToClipboard('0xca8e8d244f0d219a6fc9e4793c635cea98d0399c')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0xcca1c5f774b79de7efe9c20d0eb6cbf29ac57155" target="_blank">Catson</a></td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>BASE</td>
+                                <td>Mrs Miggles</td>
+                                <td>
+                                    0x31b2...da90 
+                                    <button class="copy-button" onclick="copyToClipboard('0x31b28012f61fc3600e1c076bafc9fd997fb2da90')">Copy</button>
+                                </td>
+                                <td><a href="https://www.dextools.io/app/en/base/pair-explorer/0x8e8285a78c480c4a4263511e80fc116a30aac793" target="_blank">Mrs Miggles</a></td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </div>
+                    <header class="center-text">
+                        <h3>History and Marketing</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Hit Percentage</th>
+                            <th>Hits</th>
+                            <th>Hot Pair</th>
+                            <th>Hot Pair Count</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>71.43%</td>
+                            <td>50 of 70</td>
+                            <td>TRUE</td>
+                            <td>50 of 50</td>
+                        </tr>
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>Funding History</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Blockchain</th>
+                            <th>Funding</th>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Orbiter Finance: Bridge</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x009d...7d21
+                                <button class="copy-button" onclick="copyToClipboard('0x009de97cbe664af2fde3be111a9608abd1f87d21')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x5628...84bb
+                                <button class="copy-button" onclick="copyToClipboard('0x5628bb21276c8e98f3789f53d0e4b42c38a984bb')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x0000...f138
+                                <button class="copy-button" onclick="copyToClipboard('0x0000cf1edaf40a9350f2b649e19d811b05dbf138')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x03b5...2f12
+                                <button class="copy-button" onclick="copyToClipboard('0x03b5d77cb9e26bbf4de8dc2e11d3233392232f12')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x7885...5f9c
+                                <button class="copy-button" onclick="copyToClipboard('0x788545fd6b38c948ca03d8eb6453c381a87a5f9c')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xd383...c375
+                                <button class="copy-button" onclick="copyToClipboard('0xd383a3d2d6a0310203dc7808ba05e5071037c375')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xb3af...8126
+                                <button class="copy-button" onclick="copyToClipboard('0xb3afe511ec8c38d3fbb4d5da984bd23c94158126')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x952f...e564
+                                <button class="copy-button" onclick="copyToClipboard('0x952f32128af084422539c4ff96df5c525322e564')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xe7f0...2f77
+                                <button class="copy-button" onclick="copyToClipboard('0xe7f0344555eb60f63232a97a9c09a1c1725d2f77')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x0000...f138
+                                <button class="copy-button" onclick="copyToClipboard('0x0000cf1edaf40a9350f2b649e19d811b05dbf138')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x9048...3b7a
+                                <button class="copy-button" onclick="copyToClipboard('0x9048ec957b7cf486e42090dd2f3fecdb5c923b7a')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x20fe...3b7a
+                                <button class="copy-button" onclick="copyToClipboard('0x20fe51a9229eef2cf8ad9e89d91cab9312cf3b7a')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x4b34...a8b6
+                                <button class="copy-button" onclick="copyToClipboard('0x4b34f943181408eac424116af7b7790c94cba8b6')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xd383...c375
+                                <button class="copy-button" onclick="copyToClipboard('0xd383a3d2d6a0310203dc7808ba05e5071037c375')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xaf4d...dbd1
+                                <button class="copy-button" onclick="copyToClipboard('0xaf4d8409f80b532dc3471701de78b20aa983dbd1')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Base: L2 Cross Domain Messenger</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xd254...9cc3
+                                <button class="copy-button" onclick="copyToClipboard('0xd254da22bff900b1f0945c4df3e83c99224d9cc3')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>MEXC: Hot Wallet (BASE)</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x9465...edd4
+                                <button class="copy-button" onclick="copyToClipboard('0x946579826ba09290ba7cf9d33464aeef46a9edd4')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x2d47...6192
+                                <button class="copy-button" onclick="copyToClipboard('0x2d479569e134808fe6f82bdada8f1822907b6192')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x5d2d...6315
+                                <button class="copy-button" onclick="copyToClipboard('0x5d2d4fbfaf25f46b6ee2db876bb081613ecb6315')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x4b34...a8b6
+                                <button class="copy-button" onclick="copyToClipboard('0x4b34f943181408eac424116af7b7790c94cba8b6')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x53cb...7b21
+                                <button class="copy-button" onclick="copyToClipboard('0x53cb4c546b33ec0eb57b5391b41ac069340c7b21')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Binance: Hot Wallet (Base)</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x423b...0976
+                                <button class="copy-button" onclick="copyToClipboard('0x423b883e4c54ad8612e34618e9ef98b13c9f0976')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x90ee...b769
+                                <button class="copy-button" onclick="copyToClipboard('0x90eed0b491cf481b8ebce0ba2c459fd82671b769')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x5ec8...004d
+                                <button class="copy-button" onclick="copyToClipboard('0x5ec8face992d54908432a276cadb8a94a50d004d')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xc1e5...6b9a
+                                <button class="copy-button" onclick="copyToClipboard('0xc1e59e8c24ecefe3d448d5f7f5f1d3367d9b6b9a')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xd714...90dc
+                                <button class="copy-button" onclick="copyToClipboard('0xd714b1242e931286807f2206e891b0eacba790dc')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Coinbase: Hot Wallet (Base)</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x4b34...a8b6
+                                <button class="copy-button" onclick="copyToClipboard('0x4b34f943181408eac424116af7b7790c94cba8b6')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x1985...5c87
+                                <button class="copy-button" onclick="copyToClipboard('0x1985ea6e9c68e1c272d8209f3b478ac2fdb25c87')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xf46b...ec92
+                                <button class="copy-button" onclick="copyToClipboard('0xf46b7b71bf024c4a7a102fb570c89b03d3ddec92')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Binance: Hot Wallet (Base)</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xc6d7...61dd
+                                <button class="copy-button" onclick="copyToClipboard('0xc6d7bafe55403e9e1b62ebd42cc0d90dbfb461dd')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x8a56...8885
+                                <button class="copy-button" onclick="copyToClipboard('0x8a56bc40d651fe844791f24ff7101929f4758885')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xfba3...6f89
+                                <button class="copy-button" onclick="copyToClipboard('0xfba37c69aa613bab5cbd041fb940de8c4ee16f89')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>Binance: Hot Wallet (Base)</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x7a8e...f98a
+                                <button class="copy-button" onclick="copyToClipboard('0x7a8e815e5e9753c433b011148a4dd18a3b70f98a')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x2574...754b
+                                <button class="copy-button" onclick="copyToClipboard('0x257434990898a303e2fb458d1a46b68cdc47754b')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x4189...87a2
+                                <button class="copy-button" onclick="copyToClipboard('0x41891e9a91c559f6cdd50c77257982db81d887a2')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x6adf...e0bb
+                                <button class="copy-button" onclick="copyToClipboard('0x6adf641bf65accbe6f10fef06433beba4645e0bb')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x21ea...6977
+                                <button class="copy-button" onclick="copyToClipboard('0x21ea74569856279e170d167b015d84807c906977')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xdc50...85d5
+                                <button class="copy-button" onclick="copyToClipboard('0xdc50d8c9ab6c583c8c370ab371b94cb2d9de85d5')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x20cf...b7a4
+                                <button class="copy-button" onclick="copyToClipboard('0x20cf518512f50f581b9e6a544c2a4c63e211b7a4')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x9d5d...2592
+                                <button class="copy-button" onclick="copyToClipboard('0x9d5ddd9364f0289a8585f844a78131c069202592')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x2470...c4cf
+                                <button class="copy-button" onclick="copyToClipboard('0x2470cd5458e25344d82343c6b75a87e52a9dc4cf')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0x0000...f138
+                                <button class="copy-button" onclick="copyToClipboard('0x0000cf1edaf40a9350f2b649e19d811b05dbf138')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>BASE</td>
+                            <td>
+                                0xc756...58e5
+                                <button class="copy-button" onclick="copyToClipboard('0xc75608731fd4c1945436a429993617f1b13958e5')">Copy</button>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                    </table>
+                    <header class="center-text">
+                        <h3>GoPLUS Audit</h3>
+                    </header>
+                    <table class="audit-table">
+                        <tr>
+                            <th>Buy Tax</th>
+                            <th>Sell Tax</th>
+                            <th>Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Whitelisted</th>
+                            <th>Blacklisted</th>
+                            <th>Anti_Whale</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Trading Cooldown</th>
+                            <th>Transfer Pause</th>
+                            <th>Anti Whale Modifiable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Fake Renounce</th>
+                            <th>Proxy</th>
+                            <th>Self Destruct</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Cannot Buy</th>
+                            <th>Cannot Sell</th>
+                            <th>Mintable</th>
+                        </tr>
+                        <tr>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <th>Dev Slippage</th>
+                            <th>User Slippage</th>
+                            <th>Deployer Honeypot</th>
+                        </tr>
+                        <tr>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>False</td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>Generated by V4 Reporting System</p>
+        </footer>
+        <div class="scanlines"></div>
+    </div>
+</body>
+</html>
